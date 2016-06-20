@@ -8,7 +8,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
@@ -16,10 +15,10 @@
 <body>
   <div id='content' class='container'></div>
   <script type='text/babel'>
-  class StickyNote extends React.Component {
+  class Board extends React.Component {
     constructor(props) {
       super(props);
-      this.state = { note:[], nextID: 0}
+      this.state = { notes:[], nextID: 0}
       this.notes = this.notes.bind(this);
       this.addNote = this.addNote.bind(this);
     }
@@ -31,24 +30,36 @@
         return notes;
     }
 
-    addNote(e){
-      e.preventDefault();
-      let notes = [{ name: this.refs.name.value }, ...this.state.notes];
-      this.refs.name.value = null;
-      this.setState({ notes, nextID: ++this.state.nextID });
+    addNote(){
+      console.log('hey');
     }
 
     render() {
       return(
         <div className='center'>
-        <h1>Stickies</h1>
-        <button>Add Sticky</button>
+          <h1>Stickies</h1>
+          <button onClick={ this.addNote}>Add Sticky</button>
+
+          <div className='three columns'>
+            {this.notes()};
+          </div>
         </div>
       );
     }
   }
 
-  ReactDOM.render(<StickyNote />, document.getElementById('content'));
+  class Note extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
+    render() {
+      return(<div>blah</div>);
+    }
+
+  }
+
+  ReactDOM.render(<Board />, document.getElementById('content'));
   </script>
 </body>
 </html>
