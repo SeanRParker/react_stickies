@@ -19,14 +19,25 @@
   class StickyNote extends React.Component {
     constructor(props) {
       super(props);
-
-
+      this.state = { note:[], nextID: 0}
+      this.notes = this.notes.bind(this);
       this.addNote = this.addNote.bind(this);
     }
+
+    notes(){
+      let notes = this.state.notes.map( note => {
+        return(<p>{note.name}</p>);
+      });
+        return notes;
+    }
+
     render() {
-      return(<div className='center'>
-      <h1>Stickies</h1>
-      </div>);
+      return(
+        <div className='center'>
+        <h1>Stickies</h1>
+        <button>Add Sticky</button>
+        </div>
+      );
     }
   }
 
