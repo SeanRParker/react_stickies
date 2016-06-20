@@ -8,3 +8,10 @@ h1{
   text-align: center;
   /*text-decoration: underline;*/
 }
+button{
+  background-color: white;
+}
+button:hover{
+  background-color:#50bbe6;
+  color:white;
+}
