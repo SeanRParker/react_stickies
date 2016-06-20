@@ -31,6 +31,13 @@
         return notes;
     }
 
+    addNote(e){
+      e.preventDefault();
+      let notes = [{ name: this.refs.name.value }, ...this.state.notes];
+      this.refs.name.value = null;
+      this.setState({ notes, nextID: ++this.state.nextID });
+    }
+
     render() {
       return(
         <div className='center'>
