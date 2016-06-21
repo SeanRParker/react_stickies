@@ -15,3 +15,12 @@ button:hover{
   background-color:#50bbe6;
   color:white;
 }
+.sticky-note, .sticky-note:first-child{
+  background-color: #369ce1;
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(117,117,117,1);
+  -moz-box-shadow: 3px 3px 10px 0px rgba(117,117,117,1);
+  box-shadow: 3px 3px 10px 0px rgba(117,117,117,1);
+  margin: 10px;
+  height: 150px;
+  padding: 5px 15px;
+}

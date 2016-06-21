@@ -18,30 +18,31 @@
   class Board extends React.Component {
     constructor(props) {
       super(props);
-      this.state = { notes:[], nextID: 0}
+      this.state = { notes:[{name: 'first'}, {name: 'second'}], nextID: 0}
       this.notes = this.notes.bind(this);
       this.addNote = this.addNote.bind(this);
     }
 
     notes(){
-      let notes = this.state.notes.map( note => {
-        return(<p>{note.name}</p>);
+      let notes = this.state.notes.map(note => {
+        return(<Note name={note.name}/>);
       });
         return notes;
     }
 
-    addNote(){
-      console.log('hey');
+    addNote(e){
+      let notes = [{ name: 'name'}, ...this.state.notes];
+      this.setState({notes: notes, nextID: ++this.state.nextID})
+      console.log(this.state.notes, this.state.nextID)
     }
 
     render() {
       return(
-
         <div className='center twelve columns'>
           <h1 className='nine columns'>Stickies</h1>
-          <button className='three columns' onClick={ this.addNote}>Add Sticky</button>
+          <button className='three columns' onClick={() => this.addNote()}>Add Sticky</button>
 
-          <div className='three columns'>
+          <div className='twelve columns'>
             {this.notes()};
           </div>
 
@@ -56,7 +57,9 @@
     }
 
     render() {
-      return(<div>blah</div>);
+      return(
+        <div className='sticky-note three columns'>{this.props.name}</div>
+      );
     }
 
   }
