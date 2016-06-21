@@ -18,21 +18,31 @@
   class Board extends React.Component {
     constructor(props) {
       super(props);
-      this.state = { notes:[{name: 'first'}, {name: 'second'}], nextID: 0}
+      this.state = { notes:[{name: 'first', id: 0}, {name: 'second', id: 1}], nextID: 2}
       this.notes = this.notes.bind(this);
       this.addNote = this.addNote.bind(this);
+      this.deleteNote = this.deleteNote.bind(this);
     }
 
     notes(){
       let notes = this.state.notes.map(note => {
-        return(<Note name={note.name}/>);
+        return(<Note key={`note-${note.id}`} name={note.name} id={note.id} deleteNote={this.deleteNote} />);
       });
         return notes;
     }
 
-    addNote(e){
-      let notes = [{ name: 'name'}, ...this.state.notes];
-      this.setState({notes: notes, nextID: ++this.state.nextID})
+    deleteNote(id){
+      let notes = this.state.notes;
+      let index = notes.findIndex( x => x.id == id);
+      notes.splice(index, 1);
+      this.setState({notes, nextID: ++this.state.nextID});
+    }
+
+
+    addNote(){
+      event.preventDefault();
+      let notes = [{ name: 'name', id: this.state.nextID }, ...this.state.notes];
+      this.setState({notes, nextID: ++this.state.nextID});
       console.log(this.state.notes, this.state.nextID)
     }
 
@@ -58,7 +68,11 @@
 
     render() {
       return(
-        <div className='sticky-note three columns'>{this.props.name}</div>
+        <div className='sticky-note three columns'>{this.props.name}
+          <button className='' onClick={() => this.props.deleteNote(this.props.id)}>
+              X
+          </button>
+        </div>
       );
     }
 
@@ -68,3 +82,4 @@
   </script>
 </body>
 </html>
+
