@@ -24,3 +24,13 @@ button:hover{
   height: 150px;
   padding: 5px 15px;
 }
+.deleteBtn {
+    padding: 0 10px;
+    background-color: #ed5c51;
+    color: rgb(255,255,255);
+    margin: 78px 0 0 80%;
+    bottom: 0%;
+}
+.deleteBtn:hover{
+  background-color:#eb2b1d;
+}

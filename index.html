@@ -69,7 +69,7 @@
     render() {
       return(
         <div className='sticky-note three columns'>{this.props.name}
-          <button className='' onClick={() => this.props.deleteNote(this.props.id)}>
+          <button className='deleteBtn' onClick={() => this.props.deleteNote(this.props.id)}>
               X
           </button>
         </div>
@@ -82,4 +82,3 @@
   </script>
 </body>
 </html>
-
